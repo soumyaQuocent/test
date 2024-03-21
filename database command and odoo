@@ -1,0 +1,58 @@
+PostgreSQL Commands and Usage
+sudo su - postgres -c psql
+To enter postgres
+\l
+To check list of Database
+\l+
+To check detailed list of Database
+\du
+To check list of Users
+\du+
+To check detailed list of Users
+CREATE DATABASE db_name;
+To create a Database
+\c db_name
+To access a Database
+CREATE schema private;
+To create a new Schema
+\dn
+To check list of Schemas in a Database
+\dn+
+To check detailed list of Schemas in a Database
+CREATE TABLE private.test_table (id INTEGER,name VARCHAR(100));
+To create a Table inside a Schema
+INSERT INTO private.test_table (id, name) VALUES (1, 'Quocent');
+To insert values inside a Table
+select * from private.test_table;
+To check the structure and values inside a Table
+DROP DATABASE db_name;
+To drop a Database
+\q
+To exit from postgres
+
+Odoo Terminal Commands and Usage
+Use these commands from the path where Odoo is to be installed.
+To run Odoo
+python3.8 odoo-bin.py
+To declare the Addons
+--addons-path="addons"
+To declare the Post
+--http-port=8089
+To declare the Database
+-d db_name
+To set up odoo on a Database
+-i base
+To check the Demo Data loading on Database creation
+--without-demo=True
+To declare the configuration file
+-c odoo.conf  |  -c setup.cfg
+To upgrade a module
+-u module_name
+To upgrade all modules
+-u all
+
+For Adani Staging Environment
+Update the odoo.conf file with the modifications like database name
+Run Odoo with the below command once and then run Odoo normally with the usual command.
+
+python3.8 odoo-bin.py --addons-path="addons" --http-port=8089 -d drp -i base --without-demo=True
