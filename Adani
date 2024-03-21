@@ -68,3 +68,124 @@ Paste the base64 encoded password for the username. For example:
 bXlwYXNzd29yZ$4
 Note: If you receive an error from this point forward, double-check the password and encoding.
 
+
+
+upstream odoo{
+        server 10.212.196.13:8069 fail_timeout=2;
+}
+upstream odoo-im{
+        server 10.212.196.13:8072 fail_timeout=2;
+}
+
+map $http_upgrade $connection_upgrade {
+  default upgrade;
+  ''      close;
+}
+map $sent_http_content_type $content_type_csp {
+    default "";
+    ~image/ "default-src 'none'";
+}
+
+server{
+        listen 8689;
+        server_name 10.212.196.13;
+
+        proxy_set_header Host $http_referer;
+        add_header Host https://tmsinfostagging.adani.com/odoo/;
+        #proxy_set_header Host https://tmsinfostagging.adani.com/odoo/;
+        #rewrite ^(.*)$ /odoo/$1 break;
+
+
+        location / {
+            proxy_pass http://odoo;
+            proxy_set_header Host $http_referer;
+
+            #New Changes based on Odoo16 Documentation
+
+            proxy_set_header X-Forwarded-Host $http_host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_set_header X-Real-IP $remote_addr;
+
+            #proxy_set_header X-Script-Name /odoo;
+             #proxy_set_header X-Script-Name /odoo;
+
+            proxy_redirect off;
+            #proxy_cookie_path $uri /odoo$uri;
+
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+            #proxy_cookie_flags session_id samesite=lax secure;
+
+            #Changes end
+
+            #rewrite ^/(.*)$ https://tmsinfostagging.adani.com/odoo/$1 permanent;
+            sub_filter '/web/' '/odoo/web/';
+            sub_filter '/mail/' '/odoo/mail/';
+            sub_filter '/web_enterprise/' '/odoo/web_enterprise/';
+            #sub_filter '/web_editor/' '/odoo/web_editor/';
+            sub_filter '/bus/' '/odoo/bus/';
+            sub_filter '/base/static/' '/odoo/base/static/';
+            sub_filter '/base_setup/' '/odoo/base_setup/';
+            sub_filter '/base_import/' '/odoo/base_import/';
+            #sub_filter '/auth_totp/' '/odoo/auth_totp/';
+            #sub_filter '/website/force/1?path=%2F' '/odoo';
+            #sub_filter '/website/' '/odoo/website/';
+
+            #Add 2 new subfilters  for password hashing
+            sub_filter '/website/translations' '/odoo/website/translations';
+            sub_filter '/qcent/' '/odoo/qcent/';
+
+            sub_filter 'href="/contactus"' 'href="/odoo/contactus"';
+            sub_filter 'href="/"' 'href="/odoo"';
+            sub_filter 'href="/web"' 'href="/odoo/web"';
+            sub_filter 'alt="Icon" src="/' 'alt="Icon" src="/odoo/';
+            sub_filter_once off;
+            sub_filter_types *;
+        }
+
+        # Redirect websocket requests to odoo gevent port
+        location /websocket {
+            proxy_pass http://odoo-im;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+            proxy_set_header X-Forwarded-Host $http_host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Real-IP $remote_addr;
+
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+            #proxy_cookie_flags session_id samesite=lax secure;  # requires nginx 1.19.8
+         }
+         location @odoo {
+            proxy_pass http://odoo;
+            proxy_set_header Host $http_referer;
+
+            #New Changes based on Odoo16 Documentation
+
+            proxy_set_header X-Forwarded-Host tmsinfostagging.adani.com/odoo;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_redirect off;
+           #proxy_cookie_path $uri /odoo$uri;
+
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+        }
+         location ~ ^/[^/]+/static/.+$ {
+                alias /data/odoostaging/web/static/;
+                # root and try_files both depend on your addons paths
+                #root /data/odoostaging;
+                #try_files /enterprise$uri /odoo/addons$uri /custom/adani-genesys$uri @odoo;
+                #expires 24h;
+                #add_header Content-Security-Policy $content_type_csp;
+         }
+
+#       location /longpolling/ {
+#           proxy_pass http://odoo-im;
+#        }
+gzip_types text/css text/scss text/plain text/xml application/xml application/json application/javascript;
+  gzip on;
+}
+
+
