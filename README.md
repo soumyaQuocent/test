@@ -15,3 +15,9 @@ GET https://tmsinfostagging.adani.com/web/image/website/1/logo/Adani TMS Staging
 GET https://tmsinfostagging.adani.com/web/static/img/odoo_logo_tiny.png [HTTP/1.1 404 Not Found 10ms]
 
 The resource at “https://tmsinfostagging.adani.com/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly.
+
+
+
+location ~ ^/[^/]+/static/.+$ {
+        alias /data/odoostaging/web/static/;
+    }
