@@ -6,3 +6,7 @@ Security Protocol	TLS 1.2
 
 
 https://ssl-tools.net/mailservers
+
+telnet smtp.adani.com 25
+openssl s_client -starttls smtp -connect smtp.adani.com:25
+ehlo smtp.adani.com
