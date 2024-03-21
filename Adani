@@ -5,6 +5,16 @@ SMTP Password	Welc0me@2024
 Security Protocol	TLS 1.2
 
 
+
+
+s = smtplib.SMTP('smtp.gmail.com', 587)
+s.starttls()
+s.ehlo()
+s.login(username, password)
+
+
+
+
 https://ssl-tools.net/mailservers
 
 telnet smtp.adani.com 25
