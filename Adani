@@ -10,3 +10,41 @@ https://ssl-tools.net/mailservers
 telnet smtp.adani.com 25
 openssl s_client -starttls smtp -connect smtp.adani.com:25
 ehlo smtp.adani.com
+
+
+
+
+
+
+Test SMTP authentication with Messaging Gateway using telnet
+
+To test SMTP authentication via telnet:
+In a telnet client such as PuTTY, connect to the SMG appliance:
+
+telnet <SMG_IP_address>  587
+ 
+Greet the mail server:
+
+EHLO mailserver.com
+ 
+Tell SMG you want to authenticate with it:
+
+AUTH LOGIN
+
+The server should return the following, which is a base64 encoded string that requires your username:
+
+334 VXNlcm5hbWU6
+ 
+Paste the base64 encoded username. For example:
+
+dXNlcm5hbWUuY29t
+
+The server should return the following, which is a base64 encoded string that requires your password:
+
+334 UGFzc3dvcmQ6
+ 
+Paste the base64 encoded password for the username. For example:
+
+bXlwYXNzd29yZ$4
+Note: If you receive an error from this point forward, double-check the password and encoding.
+
