@@ -22,3 +22,23 @@ location ~* \.(woff2|css|js|gif|png|jpg|jpeg|svg)$ {
         add_header Cache-Control "public, max-age=31536000, immutable";
         expires 365d;
     }
+
+
+
+    location /web {
+        proxy_pass http://odoo;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+    }
+
+    location /mail {
+        proxy_pass http://odoo;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_redirect off;
+    }
