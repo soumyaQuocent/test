@@ -18,6 +18,7 @@ The resource at “https://tmsinfostagging.adani.com/web/static/src/libs/fontawe
 
 
 
-location ~ ^/[^/]+/static/.+$ {
-        alias /data/odoostaging/web/static/;
+location ~* \.(woff2|css|js|gif|png|jpg|jpeg|svg)$ {
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        expires 365d;
     }
