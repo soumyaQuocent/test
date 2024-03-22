@@ -16,7 +16,7 @@ GET https://tmsinfostagging.adani.com/web/static/img/odoo_logo_tiny.png [HTTP/1.
 
 The resource at “https://tmsinfostagging.adani.com/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0” preloaded with link preload was not used within a few seconds. Make sure all attributes of the preload tag are set correctly.
 
-
+[Checked]
 
 location ~* \.(woff2|css|js|gif|png|jpg|jpeg|svg)$ {
         add_header Cache-Control "public, max-age=31536000, immutable";
@@ -42,3 +42,8 @@ location ~* \.(woff2|css|js|gif|png|jpg|jpeg|svg)$ {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_redirect off;
     }
+
+
+[To be Check]
+        Modify the command to include the --dev flag: Simply add --dev at the end of your startup command. For example, if your original command is ./odoo-bin -c odoo.conf, it would become ./odoo-bin -c odoo.conf --dev.
+    
