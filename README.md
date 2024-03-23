@@ -50,4 +50,10 @@ location / {
         Modify the command to include the --dev flag: Simply add --dev at the end of your startup command. For example, if your original command is ./odoo-bin -c odoo.conf, it would become ./odoo-bin -c odoo.conf --dev.
 
         ./odoo-bin -c odoo.conf --dev -u all
-    
+
+
+
+
+location ~ ^/(?<module_name>[^/]+)/static/description/(?<icon>.+)$ {
+        rewrite ^ /odoo/$module_name/static/description/$icon last;
+    }
