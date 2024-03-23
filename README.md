@@ -42,8 +42,12 @@ location ~* \.(woff2|css|js|gif|png|jpg|jpeg|svg)$ {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_redirect off;
     }
-
+location / {
+        rewrite ^/(.*)/static/description/(.*)$ /odoo/$1/static/description/$2 last;
+    }
 
 [To be Check]
         Modify the command to include the --dev flag: Simply add --dev at the end of your startup command. For example, if your original command is ./odoo-bin -c odoo.conf, it would become ./odoo-bin -c odoo.conf --dev.
+
+        ./odoo-bin -c odoo.conf --dev -u all
     
