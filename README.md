@@ -59,3 +59,11 @@ location ~ ^/(?<module_name>[^/]+)/static/description/(?<icon>.+)$ {
     }
 
 https://tmsinfostagging.adani.com/odoo/web#cids=1&action=menu
+
+
+
+logger.info('**************************************')
+logger.info('domain_from',domain_from)
+logger.info('**************************************')
+logger.info('domain_to',domain_to)
+
