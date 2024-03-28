@@ -57,3 +57,5 @@ location / {
 location ~ ^/(?<module_name>[^/]+)/static/description/(?<icon>.+)$ {
         rewrite ^ /odoo/$module_name/static/description/$icon last;
     }
+
+https://tmsinfostagging.adani.com/odoo/web#cids=1&action=menu
