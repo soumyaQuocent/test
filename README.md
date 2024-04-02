@@ -96,7 +96,8 @@ sub_filter_types *;
         expires 30d;
         access_log off;
     }
-static-http-url-prefix
-static_http_url_prefix = /extern/erp
+  Check this by adding in odoo.conf file  
+static_http_url_prefix = /odoo
+
 
 auth_token_data
