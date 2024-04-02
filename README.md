@@ -97,5 +97,6 @@ sub_filter_types *;
         access_log off;
     }
 static-http-url-prefix
+static_http_url_prefix = /extern/erp
 
 auth_token_data
