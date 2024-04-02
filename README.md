@@ -70,7 +70,7 @@ sub_filter_types *;
             proxy_cache_valid 200 60m;
             proxy_buffering on;
             expires 864000;
-            proxy_cache static_cache;
+            #proxy_cache static_cache;
             proxy_cache_key $host$scheme$proxy_host$request_uri;
             proxy_cache_valid 200 1d;
             proxy_cache_use_stale updating;
@@ -80,7 +80,19 @@ sub_filter_types *;
             proxy_cache_lock on;
             proxy_cache_lock_age 5s;
             proxy_cache_lock_timeout 10s;
-            proxy_cache_lock_use_stale error timeout updating http_500 http_502 http_503 http_504;
+            #proxy_cache_lock_use_stale error timeout updating http_500 http_502 http_503 http_504;
         }
-        Errror
-nginx: [emerg] unknown directive "proxy_cache_lock_use_stale" in /etc/nginx/sites-enabled/odoo:86
+
+
+
+        location ~* /web/static/ {
+        proxy_pass http://odoo;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_redirect off;
+        expires 30d;
+        access_log off;
+    }
