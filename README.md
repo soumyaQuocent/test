@@ -96,3 +96,4 @@ sub_filter_types *;
         expires 30d;
         access_log off;
     }
+static-http-url-prefix
