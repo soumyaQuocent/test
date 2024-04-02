@@ -97,3 +97,5 @@ sub_filter_types *;
         access_log off;
     }
 static-http-url-prefix
+
+auth_token_data
