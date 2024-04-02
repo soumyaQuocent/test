@@ -1,3 +1,9 @@
+sudo git clone https://sanat2909@bitbucket.org/sanat2909/qcent-genesys-adani.git
+sudo git checkout master
+sudo git status
+sudo git pull
+
+
 
 return request.redirect(self._login_redirect(uid, redirect=redirect))
 
