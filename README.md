@@ -82,4 +82,5 @@ sub_filter_types *;
             proxy_cache_lock_timeout 10s;
             proxy_cache_lock_use_stale error timeout updating http_500 http_502 http_503 http_504;
         }
-
+        Errror
+nginx: [emerg] unknown directive "proxy_cache_lock_use_stale" in /etc/nginx/sites-enabled/odoo:86
