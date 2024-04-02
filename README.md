@@ -61,3 +61,25 @@ sub_filter 'alt="Icon" src="/' 'alt="Icon" src="/odoo/';
 sub_filter_once off;
 sub_filter_types *;
 
+
+
+
+# Additional configuration to serve static files
+        location ~* /web/static/ {
+            proxy_pass http://odoo;
+            proxy_cache_valid 200 60m;
+            proxy_buffering on;
+            expires 864000;
+            proxy_cache static_cache;
+            proxy_cache_key $host$scheme$proxy_host$request_uri;
+            proxy_cache_valid 200 1d;
+            proxy_cache_use_stale updating;
+            proxy_ignore_headers Expires Cache-Control;
+            proxy_cache_bypass $cookie_session;
+            proxy_no_cache $cookie_session;
+            proxy_cache_lock on;
+            proxy_cache_lock_age 5s;
+            proxy_cache_lock_timeout 10s;
+            proxy_cache_lock_use_stale error timeout updating http_500 http_502 http_503 http_504;
+        }
+
