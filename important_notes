@@ -1,0 +1,29 @@
+
+return request.redirect(self._login_redirect(uid, redirect=redirect))
+
+
+
+soumyaQuocent
+0125@Quocent
+
+nginx odoo.conf location
+sudo vi /etc/nginx/sites-available/odoo
+
+odoostaging
+psql -h 10.212.196.140 -U tmsadmin -d adanistaging
+password : $R%@2024
+
+
+
+ source odoo-venv/bin/activate
+
+inside odoo
+./odoo-bin -c /data/odoostaging/odoo.conf -d drp_tms -i base --without-demo=True
+
+Log
+ sudo tail -f /data/odoostaging/log/odoo.log
+
+
+cd /data/odoostaging/odoo/addons/website
+
+cd /data/odoostaging/custom
