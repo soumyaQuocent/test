@@ -43,3 +43,21 @@ logger.info('domain_from',domain_from)
 logger.info('**************************************')
 logger.info('domain_to',domain_to)
 
+
+
+sub_filter '/web/' '/odoo/web/';
+sub_filter '/mail/' '/odoo/mail/';
+sub_filter '/web_enterprise/' '/odoo/web_enterprise/';
+sub_filter '/bus/' '/odoo/bus/';
+sub_filter '/base/static/' '/odoo/base/static/';
+sub_filter '/base_setup/' '/odoo/base_setup/';
+sub_filter '/base_import/' '/odoo/base_import/';
+sub_filter '/website/translations' '/odoo/website/translations';
+sub_filter '/qcent/' '/odoo/qcent/';
+sub_filter 'href="/contactus"' 'href="/odoo/contactus"';
+sub_filter 'href="/"' 'href="/odoo"';
+sub_filter 'href="/web"' 'href="/odoo/web"';
+sub_filter 'alt="Icon" src="/' 'alt="Icon" src="/odoo/';
+sub_filter_once off;
+sub_filter_types *;
+
