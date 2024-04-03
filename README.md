@@ -1,4 +1,4 @@
-[Checked]
+# [Checked]
 
 location ~* \.(woff2|css|js|gif|png|jpg|jpeg|svg)$ {
         add_header Cache-Control "public, max-age=31536000, immutable";
@@ -36,7 +36,7 @@ location ~ ^/(?<module_name>[^/]+)/static/description/(?<icon>.+)$ {
 
 https://tmsinfostagging.adani.com/odoo/web#cids=1&action=menu
 
-[02/Apr/24]
+# [02/Apr/24]
 
 logger.info('**************************************')
 logger.info('domain_from',domain_from)
@@ -64,7 +64,7 @@ sub_filter_types *;
 
 
 
-# Additional configuration to serve static files
+Additional configuration to serve static files
         location ~* /web/static/ {
             proxy_pass http://odoo;
             proxy_cache_valid 200 60m;
@@ -99,5 +99,5 @@ sub_filter_types *;
   Check this by adding in odoo.conf file  
 static_http_url_prefix = /odoo
 
-
+# [03/Apr/24]
 auth_token_data
