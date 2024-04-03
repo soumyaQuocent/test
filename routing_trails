@@ -103,6 +103,7 @@ static_http_url_prefix = /odoo
 location / {
         rewrite ^/(.*)$ /odoo/$1 last;
     }
-
+GET
+https://tmsinfostagging.adani.com/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0
 
 auth_token_data
