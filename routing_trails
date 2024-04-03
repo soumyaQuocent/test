@@ -100,4 +100,9 @@ Additional configuration to serve static files
 static_http_url_prefix = /odoo
 
 # [03/Apr/24]
+location / {
+        rewrite ^/(.*)$ /odoo/$1 last;
+    }
+
+
 auth_token_data
