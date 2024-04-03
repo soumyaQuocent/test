@@ -100,9 +100,16 @@ Additional configuration to serve static files
 static_http_url_prefix = /odoo
 
 # [03/Apr/24]
+# 1
 location / {
         rewrite ^/(.*)$ /odoo/$1 last;
     }
+# 2
+location /web/static/ {
+        alias /path/to/odoo/static/;  # Adjust this path to the actual location of Odoo static files
+        expires max;
+    }
+
 GET
 https://tmsinfostagging.adani.com/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0
 
