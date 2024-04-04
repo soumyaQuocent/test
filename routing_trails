@@ -113,4 +113,19 @@ location /web/static/ {
 GET
 https://tmsinfostagging.adani.com/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0
 
+# [04/Apr/24]
+1] 
+        location /web/static/ {
+                alias /path/to/odoo/addons/;
+            }
+        
+            location /web/assets/ {
+                alias /path/to/odoo/addons/;
+            }
+        
+            location /web/img/ {
+                alias /path/to/odoo/addons/;
+            }
+        static_http_document_root = /path/to/odoo/addons/ (odoo.conf)
+
 auth_token_data
