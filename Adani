@@ -206,3 +206,11 @@ Traceback (most recent call last):
     if sock.getsockopt(SOL_SOCKET, SO_TYPE) != SOCK_STREAM:
 AttributeError: 'SMTP' object has no attribute 'getsockopt'
 
+INFO:__main__:START
+INFO:__main__:Adani SMTP Credentials
+INFO:__main__:SMTP Server: smtp.adani.com
+INFO:__main__:Port: 25
+INFO:__main__:UserName: noreply_tmsinfo@adani.com
+INFO:__main__:Password: Welc0me@2024
+ERROR:__main__:SMTP Connection Issue: SMTP AUTH extension not supported by server.
+INFO:__main__:END
