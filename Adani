@@ -214,3 +214,89 @@ INFO:__main__:UserName: noreply_tmsinfo@adani.com
 INFO:__main__:Password: Welc0me@2024
 ERROR:__main__:SMTP Connection Issue: SMTP AUTH extension not supported by server.
 INFO:__main__:END
+
+[realtyapp_pm@AZ13LTMSWEBD01 adani-genesys]$ openssl s_client -starttls smtp -crlf -connect smtp.adani.com:25
+CONNECTED(00000003)
+depth=2 C = US, O = DigiCert Inc, OU = www.digicert.com, CN = DigiCert Global Root G2
+verify return:1
+depth=1 C = US, O = DigiCert Inc, OU = www.digicert.com, CN = RapidSSL TLS RSA CA G1
+verify return:1
+depth=0 CN = *.adani.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = *.adani.com
+   i:C = US, O = DigiCert Inc, OU = www.digicert.com, CN = RapidSSL TLS RSA CA G1
+ 1 s:C = US, O = DigiCert Inc, OU = www.digicert.com, CN = RapidSSL TLS RSA CA G1
+   i:C = US, O = DigiCert Inc, OU = www.digicert.com, CN = DigiCert Global Root G2
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIGHDCCBQSgAwIBAgIQB1YqU+iAJpahlV8tVgswZzANBgkqhkiG9w0BAQsFADBg
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
+d3cuZGlnaWNlcnQuY29tMR8wHQYDVQQDExZSYXBpZFNTTCBUTFMgUlNBIENBIEcx
+MB4XDTIzMDgzMTAwMDAwMFoXDTI0MDkzMDIzNTk1OVowFjEUMBIGA1UEAwwLKi5h
+ZGFuaS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC0Cuvb6AyA
+L+aMAWm5dACZNrhsgSHGLWSjM2DV9x6yfTVPmFJflFNmZNyW8/oQEH1o++t+mHgS
+lmaD22yaBwLmNdvkFpLqY1O+VBaFRJP2RB/qMqAKs/7Kr9/3Hbv9cgU1bFEwFy02
+0ub+uB6EpmMrwyBB0c4rDXzcQf+yHVBfxAba+AQjOAXkLkwrXW8k4SrNhoJhE9xZ
+vYlqacya1PUkZklfunJq8jCcpQ5LB0HXtmsv4CUfGq9hGsaq/vEreI7ia9aVrDcK
+0RII/21SeL7rG2aXbAJHtNFImSwJtZLnOz5vCy9pAW19JOwbgJqSOeSjh6rQc4Q+
+mX9xnQ/gpd8RAgMBAAGjggMaMIIDFjAfBgNVHSMEGDAWgBQM22yCSQ9KZwq4FO56
+xEhSiOtWODAdBgNVHQ4EFgQUDuPqh4bl1K/j6FUXB+0cDGxEO44wIQYDVR0RBBow
+GIILKi5hZGFuaS5jb22CCWFkYW5pLmNvbTAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0l
+BBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMD8GA1UdHwQ4MDYwNKAyoDCGLmh0dHA6
+Ly9jZHAucmFwaWRzc2wuY29tL1JhcGlkU1NMVExTUlNBQ0FHMS5jcmwwPgYDVR0g
+BDcwNTAzBgZngQwBAgEwKTAnBggrBgEFBQcCARYbaHR0cDovL3d3dy5kaWdpY2Vy
+dC5jb20vQ1BTMHYGCCsGAQUFBwEBBGowaDAmBggrBgEFBQcwAYYaaHR0cDovL3N0
+YXR1cy5yYXBpZHNzbC5jb20wPgYIKwYBBQUHMAKGMmh0dHA6Ly9jYWNlcnRzLnJh
+cGlkc3NsLmNvbS9SYXBpZFNTTFRMU1JTQUNBRzEuY3J0MAkGA1UdEwQCMAAwggF8
+BgorBgEEAdZ5AgQCBIIBbASCAWgBZgB1AO7N0GTV2xrOxVy3nbTNE6Iyh0Z8vOze
+w1FIWUZxH7WbAAABikun4AUAAAQDAEYwRAIgCZSeHvCNhyeUbx9Gsw4R4BkuI/LO
+er4JOOt+W9Hfw+0CIEsg/KZPRb7NJ/y10vharvz3VXDq2YcoUWVfS6ZU7iVLAHYA
+SLDja9qmRzQP5WoC+p0w6xxSActW3SyB2bu/qznYhHMAAAGKS6feRwAABAMARzBF
+AiATRKqdA3VCLR2wS/dqZ5f6BNF1zB6oanPDFu0Pdi3maAIhAPW5ABnSPbl+fzFn
+r04A2on08srvDv89QLB6+5EP0WeLAHUA2ra/az+1tiKfm8K7XGvocJFxbLtRhIU0
+vaQ9MEjX+6sAAAGKS6fefAAABAMARjBEAiB83GLXVjy2i6xrySW+v+GYijWNcOUw
+OP05NK4OvltGnQIgSLuAhMBpV0eFX4Dmohx5i1Kxb1+2EtJVjwll7r7DEhUwDQYJ
+KoZIhvcNAQELBQADggEBAJqeROy6KoiLgxhsv5mv/iqzCeZjHHTeH+Rel5Qr/r+d
+BRgfkEDvCsUK30SKO/3I0ecLcfQOX9upYQ1u6LZFib4S7QFr06CzjCh1bEO9yaIB
+6M1sGLHpSTZN0P3AjcKPAM4thj1j3/TMyAZbZY8tuSZi4mGQfuUDBjDBUEuxWAPT
+OATGuVfUAFABBJ75IicGDaqhqWfZgCiDtxVJzl8C++2/WYaDCLgqwtfxp2mXZj0J
+dv1P9SIEmRCguB7hgfAbIZ9vCSO0HESeJ5gUFfuHJ6n/gcffco4uuasqxMfWwLu/
+b7f3io6FFKJbEtAEPch8Ck2BLdQBylJ1hUVJkPtwo9A=
+-----END CERTIFICATE-----
+subject=CN = *.adani.com
+
+issuer=C = US, O = DigiCert Inc, OU = www.digicert.com, CN = RapidSSL TLS RSA CA G1
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA
+Server Temp Key: ECDH, P-384, 384 bits
+---
+SSL handshake has read 3661 bytes and written 503 bytes
+Verification: OK
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: B71A0000DFC8A744719F86FAD59456FF6F12F3630DBE6FF6E085AD6F838951BF
+    Session-ID-ctx:
+    Master-Key: AF535A52F13496F926EC45087717B30C1042B59A4C122D385D79DC27068402411BA626C46EFC16CBA9E689250869C519
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    Start Time: 1712936752
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
+---
+250 OK
