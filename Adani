@@ -322,3 +322,6 @@ Traceback (most recent call last):
   File "/usr/lib64/python3.8/ssl.py", line 1309, in do_handshake
     self._sslobj.do_handshake()
 ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1131)
+
+
+openssl s_client -starttls smtp -crlf -connect smtp.adani.com:25
