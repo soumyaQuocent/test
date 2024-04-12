@@ -300,3 +300,25 @@ SSL-Session:
     Extended master secret: yes
 ---
 250 OK
+
+[realtyapp_pm@AZ13LTMSWEBD01 adani-genesys]$ python3.8 test_scripts/smtp_server_check_adani.py
+INFO:__main__:START
+INFO:__main__:Adani SMTP Credentials
+INFO:__main__:SMTP Server: smtp.adani.com
+INFO:__main__:Port: 25
+INFO:__main__:UserName: noreply_tmsinfo@adani.com
+INFO:__main__:Password: Welc0me@2024
+Traceback (most recent call last):
+  File "test_scripts/smtp_server_check_adani.py", line 38, in <module>
+    check_smtp_credentials(smtp_server, port, username, password)
+  File "test_scripts/smtp_server_check_adani.py", line 12, in check_smtp_credentials
+    server.starttls(context=context)
+  File "/usr/lib64/python3.8/smtplib.py", line 788, in starttls
+    self.sock = context.wrap_socket(self.sock,
+  File "/usr/lib64/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib64/python3.8/ssl.py", line 1040, in _create
+    self.do_handshake()
+  File "/usr/lib64/python3.8/ssl.py", line 1309, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1131)
