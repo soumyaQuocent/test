@@ -33,3 +33,8 @@ if __name__ == "__main__":
         logger.info("Password: %s", password)
         check_smtp_credentials(smtp_server, port, username, password)
         logger.info("END")
+
+
+
+
+ERROR:__main__:Failed to send email: __init__() got an unexpected keyword argument 'tls'
