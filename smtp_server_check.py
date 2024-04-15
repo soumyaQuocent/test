@@ -37,4 +37,4 @@ if __name__ == "__main__":
 
 
 
-ERROR:__main__:Failed to send email: __init__() got an unexpected keyword argument 'tls'
+An option is not supported by the server:
