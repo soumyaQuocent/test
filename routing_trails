@@ -129,3 +129,34 @@ https://tmsinfostagging.adani.com/web/static/src/libs/fontawesome/fonts/fontawes
         static_http_document_root = /path/to/odoo/addons/ (odoo.conf)
 
 auth_token_data
+15/04
+2024-04-15 12:56:38,186 609076 ERROR drp odoo.http: Exception during request handling.
+Traceback (most recent call last):
+  File "/data/odoostaging/odoo/addons/bus/websocket.py", line 818, in open_connection
+    socket = request.httprequest.environ['socket']
+KeyError: 'socket'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/odoostaging/odoo/odoo/http.py", line 2005, in __call__
+    response = request._serve_db()
+  File "/data/odoostaging/odoo/odoo/http.py", line 1591, in _serve_db
+    return service_model.retrying(self._serve_ir_http, self.env)
+  File "/data/odoostaging/odoo/odoo/service/model.py", line 133, in retrying
+    result = func()
+  File "/data/odoostaging/odoo/odoo/http.py", line 1618, in _serve_ir_http
+    response = self.dispatcher.dispatch(rule.endpoint, args)
+  File "/data/odoostaging/odoo/odoo/http.py", line 1732, in dispatch
+    return self.request.registry['ir.http']._dispatch(endpoint)
+  File "/data/odoostaging/odoo/addons/website/models/ir_http.py", line 237, in _dispatch
+    response = super()._dispatch(endpoint)
+  File "/data/odoostaging/odoo/odoo/addons/base/models/ir_http.py", line 154, in _dispatch
+    result = endpoint(**request.params)
+  File "/data/odoostaging/odoo/odoo/http.py", line 697, in route_wrapper
+    result = endpoint(self, *args, **params_ok)
+  File "/data/odoostaging/odoo/addons/bus/controllers/websocket.py", line 18, in websocket
+    return WebsocketConnectionHandler.open_connection(request)
+  File "/data/odoostaging/odoo/addons/bus/websocket.py", line 830, in open_connection
+    raise RuntimeError(
+RuntimeError: Couldn't bind the websocket. Is the connection opened on the evented port (8072)?
