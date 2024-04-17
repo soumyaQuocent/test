@@ -325,3 +325,7 @@ ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verif
 
 
 openssl s_client -starttls smtp -crlf -connect smtp.adani.com:25
+
+https://oystermap.com/apps/adani/sra_dev/forgot_password.html
+
+https://oystermap.com/apps/adani/sra_dev
