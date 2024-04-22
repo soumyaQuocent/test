@@ -1,3 +1,7 @@
+ proxy_redirect http://tmsinfostagging.adani.com/ https://tmsinfostagging.adani.com/;
+
+
+
 upstream odoo{
         server 10.212.196.13:8069 fail_timeout=2;
 }
