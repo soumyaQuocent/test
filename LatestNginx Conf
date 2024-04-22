@@ -1,0 +1,80 @@
+upstream odoo{
+        server 10.212.196.13:8069 fail_timeout=2;
+}
+upstream odoo-im{
+        server 10.212.196.13:8072 fail_timeout=2;
+}
+
+map $http_upgrade $connection_upgrade {
+  default upgrade;
+  ''      close;
+}
+map $sent_http_content_type $content_type_csp {
+    default "";
+    ~image/ "default-src 'none'";
+}
+
+server{
+        listen 8689;
+        server_name 10.212.196.13;
+
+        proxy_set_header Host $http_host;
+
+
+        location / {
+            proxy_pass http://odoo;
+            proxy_set_header Host $http_host;
+
+            #New Changes based on Odoo16 Documentation
+
+            proxy_set_header X-Forwarded-Host $http_host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+            proxy_set_header X-Real-IP $remote_addr;
+
+            #proxy_set_header X-Script-Name /odoo; #Additional changes without above
+
+            sub_filter 'href="/' 'href="/odoo/';
+            sub_filter 'src="/' 'src="/odoo/';
+            sub_filter 'action="/' 'action="/odoo/';
+            sub_filter '/web/login' '/odoo/web/login';
+            sub_filter 'fetch(`/' 'fetch(`/odoo/';
+            sub_filter '/website/translations' '/odoo/website/translations';
+            sub_filter '/web/webclient' '/odoo/web/webclient';
+            sub_filter '/qcent/' '/odoo/qcent/';
+            sub_filter '/bus/' '/odoo/bus/';
+            sub_filter '/web_enterprise/' '/odoo/web_enterprise/';
+            sub_filter '/mail/' '/odoo/mail/';
+            sub_filter '/web/' '/odoo/web/';
+            sub_filter '/website/' '/odoo/website/';
+            sub_filter '/base_setup/' '/odoo/base_setup/';
+            sub_filter_once off;
+            sub_filter_types *;
+
+        }
+
+        # Redirect websocket requests to odoo gevent port
+        location /websocket {
+            proxy_pass http://odoo-im;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+            proxy_set_header X-Forwarded-Host $http_host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Real-IP $remote_addr;
+
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+            #proxy_cookie_flags session_id samesite=lax secure;  # requires nginx 1.19.8
+         }
+
+gzip_types text/css text/scss text/plain text/xml application/xml application/json application/javascript;
+  gzip on;
+}
+
+            proxy_redirect https://tmsinfostagging.adani.com/odoo/ http://10.212.196.13:8069/;
+            #proxy_cookie_path $uri /odoo$uri;
+
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+            #proxy_cookie_flags session_id samesite=lax secure;
+              
