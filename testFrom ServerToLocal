@@ -1,1 +1,12 @@
 Blocked loading mixed active content
+
+
+#change frontend logo alt
+website.option_header_brand_logo
+Replace this 
+<span t-field="website.logo" t-options="{'widget': 'image', 'width': 95, 'height': 40}" role="img" t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name"/>
+with
+
+<span role="img" style="width:95px;height:40px;" aria-label="Logo of Adani TMS Staging" title="Adani TMS Staging">
+  <img t-att-src="'/logo.png?company=%s' % res_company.id" class="img img-fluid" alt="Adani TMS Staging" loading="lazy" style="width:100%;"/>
+</span>
