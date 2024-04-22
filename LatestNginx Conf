@@ -1,3 +1,4 @@
+#This nginx config is needed for odoo ecommerce editor to load. Else Mixed Content HTTPS error will be shown
  proxy_redirect http://tmsinfostagging.adani.com/ https://tmsinfostagging.adani.com/;
 
 
