@@ -35,6 +35,13 @@ server{
 
             #proxy_set_header X-Script-Name /odoo; #Additional changes without above
 
+            proxy_redirect https://tmsinfostagging.adani.com/odoo/ http://10.212.196.13:8069/;
+            #proxy_cookie_path $uri /odoo$uri;
+
+            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+            #proxy_cookie_flags session_id samesite=lax secure;
+
+
             sub_filter 'href="/' 'href="/odoo/';
             sub_filter 'src="/' 'src="/odoo/';
             sub_filter 'action="/' 'action="/odoo/';
@@ -72,9 +79,5 @@ gzip_types text/css text/scss text/plain text/xml application/xml application/js
   gzip on;
 }
 
-            proxy_redirect https://tmsinfostagging.adani.com/odoo/ http://10.212.196.13:8069/;
-            #proxy_cookie_path $uri /odoo$uri;
-
-            add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
-            #proxy_cookie_flags session_id samesite=lax secure;
+           
               
