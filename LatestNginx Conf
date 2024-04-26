@@ -64,6 +64,28 @@ server{
             sub_filter_once off;
             sub_filter_types *;
 
+
+
+ sub_filter 'href="/' 'href="/odoo/';
+            sub_filter 'src="/' 'src="/odoo/';
+            sub_filter 'action="/' 'action="/odoo/';
+            #sub_filter '/web/login' '/odoo/web/login';
+            sub_filter 'fetch(`/' 'fetch(`/odoo/';
+            sub_filter '/website/' '/odoo/website/';
+            sub_filter '/website/translations' '/odoo/website/translations';
+            sub_filter '/web/webclient' '/odoo/web/webclient';
+            sub_filter '/qcent/' '/odoo/qcent/';
+            sub_filter '/bus/' '/odoo/bus/';
+            sub_filter '/web_enterprise/' '/odoo/web_enterprise/';
+            sub_filter '/mail/' '/odoo/mail/';
+            sub_filter '/web/' '/odoo/web/';
+            sub_filter '/web/login' '/odoo/web/login';
+            #sub_filter '/website/' '/odoo/website/';
+            #sub_filter '/image/odoo/website/' '/image/website/';
+            sub_filter '/base_setup/' '/odoo/base_setup/';
+            sub_filter_once off;
+            sub_filter_types *;
+
         }
 
         # Redirect websocket requests to odoo gevent port
