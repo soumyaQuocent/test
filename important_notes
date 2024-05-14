@@ -33,3 +33,6 @@ Log
 cd /data/odoostaging/odoo/addons/website
 
 cd /data/odoostaging/custom
+
+
+/data/odooprod/odoo16-venv/bin/python3 /data/odooprod/odoo/odoo/odoo-bin -c /data/odooprod/odoo.conf -i base -d drp_test5 --without-demo-ALL
