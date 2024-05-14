@@ -12,6 +12,8 @@ return request.redirect(self._login_redirect(uid, redirect=redirect))
 soumyaQuocent
 0125@Quocent
 
+M240403134753886
+
 nginx odoo.conf location
 sudo vi /etc/nginx/sites-available/odoo
 
