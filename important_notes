@@ -38,3 +38,10 @@ cd /data/odoostaging/custom
 
 
 /data/odooprod/odoo16-venv/bin/python3 /data/odooprod/odoo/odoo/odoo-bin -c /data/odooprod/odoo.conf -i base -d drp_test5 --without-demo-ALL
+
+Odoo V16 - Database Enterprise Check
+Go to enterprise/web_enterprise/static/src/webclient/home_menu/enterprise_subscription_service.js line #50 in daysLeft(). Change it to return a static high number (like 99999).
+
+get daysLeft() {
+return 99999; //daysUntil(this.expirationDate);
+}
