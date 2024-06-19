@@ -3,7 +3,7 @@ sudo git checkout master
 sudo git status
 sudo git pull
 
-ghpzAwVmpusjF3NcBjYWFkJ5DNcSdqfFK0Bfhnz
+ghprCIwVMfLPL9F14F0VM6iDTapK0PW1r2gEMQl
 
 return request.redirect(self._login_redirect(uid, redirect=redirect))
 
