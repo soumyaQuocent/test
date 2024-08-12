@@ -1,162 +1,385 @@
-# [Checked]
+ select * from hut_polygons limit 5;
+ objectid |       hut_id        | no_of_floors | ward_no | sector_no | zone_no | area_name | nagar_name | society_name | street_name | landmark_name | pincode | city_na
+me | state_name  | country_name | structure_status | surveyor_name | unit_count |       unit_01       |        unit_02         | unit_03 | unit_04 | unit_05 | unit_06 |
+ unit_07 | unit_08 | unit_09 | unit_10 | unit_11 | unit_12 | unit_13 | unit_14 | unit_15 | unit_16 | unit_17 | unit_18 | unit_19 | unit_20 | unit_21 | unit_22 | unit_23
+ | unit_24 | unit_25 | unit_26 | unit_27 | unit_28 | unit_29 | unit_30 |    class     |  sub_class   | no_floors | cons_type |                globalid                |
+created_user |    created_date     | last_edited_user |  last_edited_date   | work_area_name |  structure_id   |
 
-location ~* \.(woff2|css|js|gif|png|jpg|jpeg|svg)$ {
-        add_header Cache-Control "public, max-age=31536000, immutable";
-        expires 365d;
-    }
+                                                                                                                           shape
 
-
-    location /web {
-        proxy_pass http://odoo;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_redirect off;
-    }
-
-    location /mail {
-        proxy_pass http://odoo;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_redirect off;
-    }
-location / {
-        rewrite ^/(.*)/static/description/(.*)$ /odoo/$1/static/description/$2 last;
-    }
-
-
-
-
-location ~ ^/(?<module_name>[^/]+)/static/description/(?<icon>.+)$ {
-        rewrite ^ /odoo/$module_name/static/description/$icon last;
-    }
-
-https://tmsinfostagging.adani.com/odoo/web#cids=1&action=menu
-
-# [02/Apr/24]
-
-logger.info('**************************************')
-logger.info('domain_from',domain_from)
-logger.info('**************************************')
-logger.info('domain_to',domain_to)
-
-
-
-sub_filter '/web/' '/odoo/web/';
-sub_filter '/mail/' '/odoo/mail/';
-sub_filter '/web_enterprise/' '/odoo/web_enterprise/';
-sub_filter '/bus/' '/odoo/bus/';
-sub_filter '/base/static/' '/odoo/base/static/';
-sub_filter '/base_setup/' '/odoo/base_setup/';
-sub_filter '/base_import/' '/odoo/base_import/';
-sub_filter '/website/translations' '/odoo/website/translations';
-sub_filter '/qcent/' '/odoo/qcent/';
-sub_filter 'href="/contactus"' 'href="/odoo/contactus"';
-sub_filter 'href="/"' 'href="/odoo"';
-sub_filter 'href="/web"' 'href="/odoo/web"';
-sub_filter 'alt="Icon" src="/' 'alt="Icon" src="/odoo/';
-sub_filter_once off;
-sub_filter_types *;
-
-
-
-
-Additional configuration to serve static files
-        location ~* /web/static/ {
-            proxy_pass http://odoo;
-            proxy_cache_valid 200 60m;
-            proxy_buffering on;
-            expires 864000;
-            #proxy_cache static_cache;
-            proxy_cache_key $host$scheme$proxy_host$request_uri;
-            proxy_cache_valid 200 1d;
-            proxy_cache_use_stale updating;
-            proxy_ignore_headers Expires Cache-Control;
-            proxy_cache_bypass $cookie_session;
-            proxy_no_cache $cookie_session;
-            proxy_cache_lock on;
-            proxy_cache_lock_age 5s;
-            proxy_cache_lock_timeout 10s;
-            #proxy_cache_lock_use_stale error timeout updating http_500 http_502 http_503 http_504;
-        }
+                                                                                                                                            | gdb_archive_oid |      gdb
+_from_date      |       gdb_to_date       | structure_type
+----------+---------------------+--------------+---------+-----------+---------+-----------+------------+--------------+-------------+---------------+---------+--------
+---+-------------+--------------+------------------+---------------+------------+---------------------+------------------------+---------+---------+---------+---------+
+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+--------
+-+---------+---------+---------+---------+---------+---------+---------+--------------+--------------+-----------+-----------+----------------------------------------+-
+-------------+---------------------+------------------+---------------------+----------------+-----------------+--------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------+-----------------+---------
+----------------+-------------------------+----------------
+    43361 | DRP/S6/GN/Z02/00143 |            1 | GN      | S6        | Z02     |           |            |              |             |               |         | Mumbai
+   | Maharashtra | India        | Not Started      |               |          1 | DRP/S6/GN/Z02/00143 |                        |         |         |         |         |
+         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |
+ |         |         |         |         |         |         |         | Unclassified | Unclassified |           |           | {43896A59-1AE1-45AF-9A1E-F34F6C3E7DDA} |
+SDE          | 2024-03-26 21:54:32 | SDE              | 2024-03-31 22:56:59 | KRN-23         |                 | 5D0100000800000008001000E610000081050000011900049AF397F
+EC21BB9EBC6FFB118F0DA01AB40EE5BD7EA01E61ECC4E818F07F6A302A36985C302D0C2029667D0E102937180A8D6B907000000000000008404330000A03496826B3736524030B23177F9063340D43A647C38365
+24070532700FC063340010000000800000000000000243910C737365240D074B6BAFB063340E060E3253836524000A60F41FB063340D43A647C3836524020BC18D2FA063340901A0F603836524030B23177F9063
+3403496826B3736524060188FB0FA06334024F9B87337365240901C8304FB06334074D6578C3736524070532700FC063340243910C737365240D074B6BAFB0633400000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000093 |             915 | 2024-03-
+31 17:26:59.702 | 2024-04-05 12:21:38.58  |
+    43407 | DRP/S6/GN/Z02/00127 |            2 | GN      | S6        | Z02     |           |            |              |             |               |         | Mumbai
+   | Maharashtra | India        | Not Started      |               |          2 | DRP/S6/GN/Z02/00127 | DRP/S6/GN/Z02/00127/F1 |         |         |         |         |
+         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |
+ |         |         |         |         |         |         |         | Unclassified | Unclassified |           |           | {03CD4DFF-387E-4211-B95A-262DA9BF3946} |
+SDE          | 2024-03-26 21:54:32 | SDE              | 2024-03-31 22:56:36 | KRN-21         |                 | 220100000600000008001000E610000086040000011900049DEE92F
+EC21BBBECC5FFB1189875ADE002F7DC05A9D601DF5CBF1BF17AC5EF02AFBE06D0E40180A8D6B90700000000009403330000A01CC0EF3A36365240508D6132FB063340A054713937365240E0199CB1FD063340010
+000000600000000000000C861EF1937365240508D6132FB0633401CC0EF3A36365240306F7627FC063340D023E45B36365240E0199CB1FD063340289EB7743636524090D08F93FD063340A05471393736524050D
+917ADFC063340C861EF1937365240508D6132FB063340000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+000000000000000008D03                                                                                                                       |             909 | 2024-03-
+31 17:26:36.344 | 2024-04-05 12:16:37.776 |
+    43351 | DRP/S6/GN/Z02/00106 |            1 | GN      | S6        | Z02     |           |            |              |             |               |         | Mumbai
+   | Maharashtra | India        | In Progress      | ssingh        |          1 | DRP/S6/GN/Z02/00106 |                        |         |         |         |         |
+         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |
+ |         |         |         |         |         |         |         | Unclassified | Unclassified |           |           | {4E253374-8517-47B5-85A0-D1B7B46B609C} |
+SDE          | 2024-03-26 21:54:32 | Esri_Anonymous   | 2024-04-16 12:03:07 | KRN-18         | S_1712129321464 | 240100000600000008001000E61000008804000001190004A3E796F
+EC21B9C9FA1FFB118A70FF50581B604C8C101B8AA01B6CF03F7C0049CE801E9AF01D5F10380A8D6B90700000000009403330000A0002985A1373652407098C1B5E60633400091846B38365240A0ED61A1E906334
+0010000000600000000000000002985A137365240006A618BE70633409017ABD037365240A0ED61A1E90633400091846B38365240A0FECDA7E80633403820A63D383652407098C1B5E606334008D4B5A53736524
+030641F85E7063340002985A137365240006A618BE706334000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+00000000000000000530C0000                                                                                                                   |            3155 | 2024-04-
+16 06:33:07.761 | 2024-04-23 07:13:10.027 |
+    43409 | DRP/S6/GN/Z02/00129 |            1 | GN      | S6        | Z02     |           |            |              |             |               |         | Mumbai
+   | Maharashtra | India        | Not Started      |               |          1 | DRP/S6/GN/Z02/00129 |                        |         |         |         |         |
+         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |
+ |         |         |         |         |         |         |         | Unclassified | Unclassified |           |           | {CCADB8CD-737D-48A1-B7BB-8E06BAC2ABF2} |
+SDE          | 2024-03-26 21:54:32 | SDE              | 2024-03-31 22:56:36 | KRN-21         |                 | 050100000500000008001000E6100000A903000001190004A78195F
+EC21BADA7CCFFB118E6D30584F001F345EED001A1CD05D58302B84BBFE30180A8D6B90700000000BC02330000A04096D28E36365240709555B5FD063340B8F9CB63373652404054E5ABFF0633400100000005000
+00000000000B8F9CB6337365240A07321AAFE0633409CE26D4F37365240709555B5FD0633404096D28E36365240F027C9CBFE063340DCFD8EA1363652404054E5ABFF063340B8F9CB6337365240A07321AAFE063
+3400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008E
+                                                                                                                                            |             910 | 2024-03-
+31 17:26:36.344 | 2024-04-05 12:20:38.725 |
+    43323 | DRP/S6/GN/Z02/00014 |            2 | GN      | S6        | Z02     |           |            |              |             |               |         | Mumbai
+   | Maharashtra | India        | Not Started      |               |          2 | DRP/S6/GN/Z02/00014 | DRP/S6/GN/Z02/00014/F1 |         |         |         |         |
+         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |         |
+ |         |         |         |         |         |         |         | Unclassified | Unclassified |           |           | {FA948D77-92E9-4611-8F60-83C57BC61288} |
+SDE          | 2024-03-26 21:54:32 | SDE              | 2024-03-31 22:44:57 | KRN-03         |                 | 540000000700000008001000E61000003800000001110004AAA4F9F
+DC21BACC1F9FEB1188AC204DE8402B4C801F04EA854AD2CBD9C0183ED02E7E9069ACB02FC9201FC910380A8D6B9070000000000001D030000
 
 
+                                                                                                                                            |             797 | 2024-03-
+31 17:14:57.92  | 2024-04-01 08:02:43.886 |
+(5 rows)
 
-        location ~* /web/static/ {
-        proxy_pass http://odoo;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header X-Forwarded-Host $http_host;
-        proxy_redirect off;
-        expires 30d;
-        access_log off;
-    }
-  Check this by adding in odoo.conf file  
-static_http_url_prefix = /odoo
 
-# [03/Apr/24]
-# 1
-location / {
-        rewrite ^/(.*)$ /odoo/$1 last;
-    }
-# 2
-location /web/static/ {
-        alias /path/to/odoo/static/;  # Adjust this path to the actual location of Odoo static files
-        expires max;
-    }
+select * from unit_info limit 5;
+objectid | form_lock | visit_count |     visit_date      | visit_remarks |     unit_id     |           relative_path           | surveyor_name | surveyor_desig |   drp
+_officer_name   |          drp_officer_desig           |     survey_date     | survey_end_date | surveyors_remarks | ward_no | sector_no | zone_no | pincode | city_name
+ | state_name  | country_name |       hut_id        |          area_name          |    society_name     |     nagar_name     |  street_name  |      landmark_name      |
+ floor | unit_status |     unit_unique_id     | respondent_available |    respondent_name     | respondent_mobile | respondent_dob | respondent_age | respondent_hoh_rel
+ationship | respondent_non_available_remark | respondent_hoh_name | respondent_hoh_contact | respondent_remarks | unit_usage  | type_of_other_structure | tenement_numbe
+r | tenement_document | mashal_survey_number | survey_pavti_no | ownership_status | unit_area_sqft | ghumasta_area_sqft | loft_present | loft_area_sqft |   existence_si
+nce   | existence_since_year |                   structure_year                   | employees_count | owner_employer_name | hoh_availability | owner_photo_with_uniqueid
+ | distometer_video | mobile_no_for_otp | otp_sent | otp_received | otp_verified |   otp_remarks    | panchnama_form_uploaded | panchnama_form_remarks | annexure_upload
+ed | annexure_upload_date | annexure_uploaded_from | annexure_type |   annexure_remarks    | other_remarks |  created_user  |    created_date     | last_edited_user |
+last_edited_date   | media_captured_cnt | media_uploaded_cnt | gen_qc_userid |           gen_qc_by            | gen_qc_user | gen_qc_status |     gen_qc_date     | gen_
+qc_end_date | gen_qc_remarks | client_qc_userid |       client_qc_by        | client_qc_user | client_qc_status |   client_qc_date    | client_qc_end_date |
+client_qc_remarks             | drp_verification_userid | drp_verification_by | drp_verification_user | drp_verification_status | drp_verification_date | drp_verificati
+on_end_date | drp_verification_remarks | summary_uploaded | summary_upload_date | summary_remarks | pre_eligibility_qa_by | pre_eligibility_qa_user | pre_eligibility_qa
+_status | pre_eligibility_qa_date | pre_eligibility_qa_end_date | pre_eligibility_qa_remarks |         remarks         |              rel_globalid              |
+         globalid                | gdb_archive_oid |      gdb_from_date      |       gdb_to_date       |          access_to_unit          |       thumb_remarks       |
+residential_area_sqft | commercial_area_sqft | drp_officer_name_other | drp_officer_desig_other | is_booth_verified | nagar_name_other | respondent_hoh_rel_other | rema
+rks_other | otp_remarks_other | structure_type_religious | structure_type_amenities | name_of_structure | type_of_diety | type_of_diety_other | name_of_diety | category
+_of_faith | category_of_faith_other | sub_category_of_faith | religion_of_structure_belongs | structure_ownership_status | name_of_trust_or_owner | nature_of_structure
+| construction_material | daily_visited_people_count | is_structure_registered | structure_registered_with | other_religious_authority | name_of_trustee | name_of_lando
+wner | noc_from_landlord_or_govt | approval_from_govt | yearly_festival_conducted | ra_total_no_of_floors | structure_religious_other | structure_amenities_other | tene
+ment_document_other | activity_log
+----------+-----------+-------------+---------------------+---------------+-----------------+-----------------------------------+---------------+----------------+------
+----------------+--------------------------------------+---------------------+-----------------+-------------------+---------+-----------+---------+---------+----------
+-+-------------+--------------+---------------------+-----------------------------+---------------------+--------------------+---------------+-------------------------+
+-------+-------------+------------------------+----------------------+------------------------+-------------------+----------------+----------------+-------------------
+----------+---------------------------------+---------------------+------------------------+--------------------+-------------+-------------------------+---------------
+--+-------------------+----------------------+-----------------+------------------+----------------+--------------------+--------------+----------------+---------------
+------+----------------------+----------------------------------------------------+-----------------+---------------------+------------------+--------------------------
+-+------------------+-------------------+----------+--------------+--------------+------------------+-------------------------+------------------------+----------------
+---+----------------------+------------------------+---------------+-----------------------+---------------+----------------+---------------------+------------------+--
+-------------------+--------------------+--------------------+---------------+--------------------------------+-------------+---------------+---------------------+-----
+------------+----------------+------------------+---------------------------+----------------+------------------+---------------------+--------------------+------------
+------------------------------+-------------------------+---------------------+-----------------------+-------------------------+-----------------------+---------------
+------------+--------------------------+------------------+---------------------+-----------------+-----------------------+-------------------------+-------------------
+--------+-------------------------+-----------------------------+----------------------------+-------------------------+----------------------------------------+-------
+---------------------------------+-----------------+-------------------------+-------------------------+----------------------------------+---------------------------+-
+----------------------+----------------------+------------------------+-------------------------+-------------------+------------------+--------------------------+-----
+----------+-------------------+--------------------------+--------------------------+-------------------+---------------+---------------------+---------------+---------
+----------+-------------------------+-----------------------+-------------------------------+----------------------------+------------------------+---------------------
++-----------------------+----------------------------+-------------------------+---------------------------+---------------------------+-----------------+--------------
+-----+---------------------------+--------------------+---------------------------+-----------------------+---------------------------+---------------------------+-----
+--------------------+--------------
+    23255 |         1 |           4 | 2024-05-27 15:36:35 |               | U_1714028371275 | /S_1714028342224/U_1714028371275/ | nkhan         | Field Surveyor | Mr. A
+mol Sadavarte   | Land Surveyor                        | 2024-04-25 12:29:00 | 1716804395007   |                   | GN      | S6        | Z02     | 400019  | Mumbai
+ | Maharashtra | India        | DRP/S6/GN/Z02/01076 | Matunga                     | Azad nagr B word    | Azad Nagar         | Katariya Road | Central Railway colony  |
+ 0     | Completed   | DRP/S6/GN/Z02/01076    | YES                  | Vireshwar Vikas Mandal | 9920839384        | 1/6/1964       | 59             | Others
+          |                                 |                     |                        |                    | Residential |                         | 115
+  | Aadhar Card       |                      | 014537          | Ownership        |   121.91000000 |         0.00000000 | NO           |     0.00000000 | 1995-05-30 00:
+00:00 |                 1995 | On or prior to 01.01.2000 (Refer GR dt 16.05.2015) |                 |                     |                0 |
+ |                  |                   |        0 |            0 |            0 | OTP not received |                         | Panchnama not signed   |
+ 0 | 1899-12-30 00:00:00  |                        |               | HOH not available     |               | Esri_Anonymous | 2024-04-25 17:45:36 | portaladmin      | 2
+024-06-04 12:29:57 |                  0 |                  0 |               | sakshi.more@email.igenesys.com |             | Not Started   | 2024-06-03 11:29:36 |
+            |                |                  | abhishek.chavan@adani.com |                | Rejected         | 2024-06-03 11:29:31 |                    | On annex an
+d Panchama HOH name mismatch. |                         |                     |                       |                         |                       |
+            |                          |                  |                     |                 |                       |                         |
+        |                         |                             |                            | Survey form completed   | {360E6D35-5386-49AA-9942-F8198D32272C} | {C8530
+66F-E686-4304-9F8A-128955C05153} |           19456 | 2024-06-04 06:59:57.408 | 2024-06-04 07:08:54.197 | Indirect Access from Common Area | HOH not available         |
+           0.00000000 |           0.00000000 |                        |                         |                   |                  |                          |
+          |                   |                          |                          |                   |               |                     |               |
+          |                         |                       |                               |                            |                        |
+|                       |                            |                         |                           |                           |                 |
+     |                           |                    |                           |                       |                           |                           |
+                    |
+   157264 |         0 |           1 | 2024-08-05 14:52:59 |               | U_1722695132098 | /S_1722695070767/U_1722695132098/ | SNetkar       | Field Surveyor | Mr. A
+mar Suryavanshi | Deputy Community Development Officer | 2024-08-03 19:55:00 |                 |                   | GN      | S2        | Z13     | 400017  | Mumbai
+ | Maharashtra | India        | DRP/S2/GN/Z13/00578 | kamala nehru nagar dharavi  | kamala nehru nagar  | Kamala Nehru Nagar |               |                         |
+ 1     | On Hold     | DRP/S2/GN/Z13/00578/F1 | NO                   |                        |                   |                |                |
+          | Member not co-operating         |                     |                        |                    |             |                         |
+  |                   |                      |                 |                  |     0.00000000 |                    |              |                |
+      |                      |                                                    |                 |                     |                  |
+ |                  |                   |        0 |            0 |            0 |                  |                         |                        |
+   |                      |                        |               |                       |               | mobileuser     | 2024-08-03 19:57:12 | mobileuser       | 2
+024-08-05 14:53:42 |                    |                    |               |                                |             |               |                     |
+            |                |                  |                           |                |                  |                     |                    |
+                              |                         |                     |                       |                         |                       |
+            |                          |                  |                     |                 |                       |                         |
+        |                         |                             |                            | Member not co-operating | {CC048EC7-D8D2-480A-8D80-20D97103DC45} | {0CA63
+A96-07AC-48F0-9E40-43C43E4F0004} |           52790 | 2024-08-05 09:23:42.586 | 2024-08-06 12:18:24.773 | Indirect Access from Common Area |                           |
+           0.00000000 |           0.00000000 |                        |                         |                   |                  |                          |
+          |                   |                          |                          |                   |               |                     |               |
+          |                         |                       |                               |                            |                        |
+|                       |                            |                         |                           |                           |                 |
+     |                           |                    |                           |                       |                           |                           |
+                    |
+    29244 |         1 |           1 | 2024-04-28 17:38:35 |               | U_1714300127893 | /S_1714300075245/U_1714300127893/ | anetke        | Field Surveyor | Mr. Y
+ashwant Padhen  | Land Surveyor                        | 2024-04-28 15:58:00 | 1714306114861   |                   | GN      | S6        | Z02     | 400019  | Mumbai
+ | Maharashtra | India        | DRP/S6/GN/Z02/01544 | Azad Nagar                  | Azad Nagar          | Azad Nagar         |               |                         |
+ 0     | Completed   | DRP/S6/GN/Z02/01544    | YES                  | Vanita Atmaram Ambre   | 9920320751        | 28/4/1958      | 66             | Self
+          |                                 |                     |                        |                    | Residential |                         | 196
+  | Aadhar Card       |                      | 0149597         | Ownership        |    99.13000000 |         0.00000000 | NO           |     0.00000000 | 1987-04-28 00:
+00:00 |                 1987 | On or prior to 01.01.2000 (Refer GR dt 16.05.2015) |                 |                     |                1 |
+ |                  |                   |        0 |            0 |            0 | OTP not received |                         | Panchnama signed       |
+ 1 | 2024-04-28 17:38:35  |                        |               | Both annexures signed |               | Esri_Anonymous | 2024-04-28 17:38:50 | Esri_Anonymous   | 2
+024-05-02 11:40:51 |                  0 |                  0 |               | vishakas                       |             | Accepted      | 2024-04-30 11:50:50 |
+            | QC Accepted    |                  | vijaym                    |                | Approved         | 2024-05-02 11:40:29 |                    | QC Approved
+                              |                         |                     |                       |                         |                       |
+            |                          |                  |                     |                 |                       |                         |
+        |                         |                             |                            | Survey form completed   | {FFAC92B1-501A-4CDB-9D21-9E2FBDD3A05B} | {F24C5
+4BE-5041-459F-AEDB-CEB7641C1C0E} |            9126 | 2024-05-02 06:10:51.97  | 2024-05-12 03:31:44.241 | Indirect Access from Common Area | Thumb Impression provided |
+           0.00000000 |           0.00000000 |                        |                         |                   |                  |                          |
+          |                   |                          |                          |                   |               |                     |               |
+          |                         |                       |                               |                            |                        |
+|                       |                            |                         |                           |                           |                 |
+     |                           |                    |                           |                       |                           |                           |
+                    |
+    23255 |         1 |           4 | 2024-05-27 15:36:35 |               | U_1714028371275 | /S_1714028342224/U_1714028371275/ | nkhan         | Field Surveyor | Mr. A
+mol Sadavarte   | Land Surveyor                        | 2024-04-25 12:29:00 | 1716804395007   |                   | GN      | S6        | Z02     | 400019  | Mumbai
+ | Maharashtra | India        | DRP/S6/GN/Z02/01076 | Matunga                     | Azad nagr B word    | Azad Nagar         | Katariya Road | Central Railway colony  |
+ 0     | Completed   | DRP/S6/GN/Z02/01076    | YES                  | Vireshwar Vikas Mandal | 9920839384        | 1/6/1964       | 59             | Others
+          |                                 |                     |                        |                    | Residential |                         | 115
+  | Aadhar Card       |                      | 014537          | Ownership        |   121.91000000 |         0.00000000 | NO           |     0.00000000 | 1995-05-30 00:
+00:00 |                 1995 | On or prior to 01.01.2000 (Refer GR dt 16.05.2015) |                 |                     |                0 |
+ |                  |                   |        0 |            0 |            0 | OTP not received |                         | Panchnama not signed   |
+ 0 | 1899-12-30 00:00:00  |                        |               | HOH not available     |               | Esri_Anonymous | 2024-04-25 17:45:36 | portaladmin      | 2
+024-06-04 12:38:54 |                  0 |                  0 |               | sakshi.more@email.igenesys.com |             | Not Started   | 2024-06-03 11:29:36 |
+            |                |                  | abhishek.chavan@adani.com |                | Rejected         | 2024-06-03 11:29:31 |                    | On annex an
+d Panchama HOH name mismatch. |                         |                     |                       |                         |                       |
+            |                          |                  |                     |                 |                       |                         |
+        |                         |                             |                            | Survey form completed   | {360E6D35-5386-49AA-9942-F8198D32272C} | {C8530
+66F-E686-4304-9F8A-128955C05153} |           19459 | 2024-06-04 07:08:54.197 | 2024-06-04 07:12:29.714 | Indirect Access from Common Area | HOH not available         |
+           0.00000000 |           0.00000000 |                        |                         |                   |                  |                          |
+          |                   |                          |                          |                   |               |                     |               |
+          |                         |                       |                               |                            |                        |
+|                       |                            |                         |                           |                           |                 |
+     |                           |                    |                           |                       |                           |                           |
+                    |
+    64829 |         0 |           1 | 2024-06-04 13:14:42 |               | U_1717480710272 | /S_1717480616052/U_1717480710272/ | sthakur       | Field Surveyor | Mr. Y
+ashwant Padhen  | Land Surveyor                        | 2024-06-04 11:26:00 |                 |                   | GN      | S1        | Z03     | 400019  | Mumbai
+ | Maharashtra | India        | DRP/S1/GN/Z03/00090 | matunga road                | milind nagar        | Milind Nagar       |               |                         |
+ 2     | On Hold     | DRP/S1/GN/Z03/00090    | NO                   |                        |                   |                |                |
+          | Member not co-operating         |                     |                        |                    |             |                         |
+  |                   |                      |                 |                  |     0.00000000 |                    |              |                |
+      |                      |                                                    |                 |                     |                  |
+ |                  |                   |        0 |            0 |            0 |                  |                         |                        |
+   |                      |                        |               |                       |               | portaladmin    | 2024-06-04 13:15:46 | portaladmin      | 2
+024-06-04 13:15:46 |                    |                    |               |                                |             |               |                     |
+            |                |                  |                           |                |                  |                     |                    |
+                              |                         |                     |                       |                         |                       |
+            |                          |                  |                     |                 |                       |                         |
+        |                         |                             |                            | Member not co-operating | {85E7AF27-0CED-469C-8847-10FF25E7111C} | {87DD4
+3D0-8049-413C-BBFA-FA45F901820F} |           19470 | 2024-06-04 07:45:46.789 | 2024-06-08 08:11:30.66  | Indirect Access from Common Area |                           |
+           0.00000000 |           0.00000000 |                        |                         |                   |                  |                          |
+          |                   |                          |                          |                   |               |                     |               |
+          |                         |                       |                               |                            |                        |
+|                       |                            |                         |                           |                           |                 |
+     |                           |                    |                           |                       |                           |                           |
+                    |
+(5 rows)
 
-GET
-https://tmsinfostagging.adani.com/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0
+ select * from hoh_info limit 5;
+ objectid |  created_user  |    created_date     | last_edited_user |  last_edited_date   |     hoh_id      |                   relative_path                   | relati
+onship_with_hoh |         hoh_name          | hoh_contact_no |       hoh_dob       | hoh_age | hoh_gender | hoh_spouse_count |       hoh_spouse_name       | staying_sin
+ce_year | marital_status |  aadhar_no   |   pan_no   | ration_card_no | ration_card_colour | religion | from_state  | mother_tongue |    education     | occupation |  t
+ype_of_work   | monthly_income | mode_of_transport | school_college_name_location | handicap_or_critical_disease | staying_with | vehicle_owned_driven_type |  place_of_
+work  | count_of_other_members | media_captured_cnt | media_uploaded_cnt | is_other_hoh_present | primary_hoh | survey_acknowledgement_mode | survey_acknowledgement_sen
+t | survey_acknowledgement_date | hoh_sms_sent | hoh_sms_date | hoh_whatsapp_sent | hoh_whatsapp_date | hoh_call_completed | hoh_call_date | hoh_floor_no | hoh_occupanc
+y_type | death_certificate |              rel_globalid              |                globalid                | gdb_archive_oid |      gdb_from_date      |       gdb_to_
+date       | marital_status_other | religion_other | from_state_other | mother_tongue_other | education_other | occupation_other | type_of_work_other | mode_of_transpor
+t_other | vehicle_owned_driven_other |                       activity_log                        | adhaar_verify_status | adhaar_verify_remark | adhaar_verify_date
+----------+----------------+---------------------+------------------+---------------------+-----------------+---------------------------------------------------+-------
+----------------+---------------------------+----------------+---------------------+---------+------------+------------------+-----------------------------+------------
+--------+----------------+--------------+------------+----------------+--------------------+----------+-------------+---------------+------------------+------------+---
+--------------+----------------+-------------------+------------------------------+------------------------------+--------------+---------------------------+-----------
+------+------------------------+--------------------+--------------------+----------------------+-------------+-----------------------------+---------------------------
+--+-----------------------------+--------------+--------------+-------------------+-------------------+--------------------+---------------+--------------+-------------
+-------+-------------------+----------------------------------------+----------------------------------------+-----------------+-------------------------+--------------
+-----------+----------------------+----------------+------------------+---------------------+-----------------+------------------+--------------------+-----------------
+--------+----------------------------+-----------------------------------------------------------+----------------------+----------------------+---------------------
+    12435 | Esri_Anonymous | 2024-04-15 18:25:52 | Esri_Anonymous   | 2024-04-15 18:25:52 | H_1713160030904 | /S_1713156422926/U_1713156510190/H_1713160030904/ |
+                | Ashwini Vishwas Mandavkar | 7400048342     | 1987-08-05 10:00:00 |      36 | Female     |                0 | Vishwas Gopinath Mandavkar  |
+   2019 | Widow          | 670368571708 | COMPM0154H | 1259074        | Orange             | Hinduism | Maharashtra | Marathi       | Secondary School | Others     | Hu
+man Resources |                |                   |                              | No                           | Family       |                           |
+      |                      0 |                    |                    |                      |             |                             |
+  |                             |              |              |                   |                   |                    |               |              |
+       |                 0 | {CA8EFA9A-04B1-455D-906D-C7167C41491B} | {8B84D833-CD05-4EAD-BFD1-427A12728407} |            1223 | 2024-04-15 12:55:52.248 | 2024-05-02 08
+:08:58.054 |                      |                |                  |                     |                 |                  |                    |
+        |                            |                                                           |                      |                      |
+   122473 | mobileuser     | 2024-07-06 18:43:31 | portaladmin      | 2024-08-07 10:01:31 | H_1720252799193 | /S_1720181073759/U_1720181087248/H_1720252799193/ |
+                | Lalsaheb Khilavan Singh   | 8097208302     | 1958-09-14 05:30:00 |      65 | Male       |                1 | Mangala Devi Lalsaheb Singh |
+   2000 | Married        | 810641023614 | BORPS0976M | 0024620        | Orange             |          |             |               |                  |            |
+              |                |                   |                              | No                           | Family       |                           |
+      |                      0 |                    |                    |                      |             |                             |
+  |                             |              |              |                   |                   |                    |               |              |
+       |                 0 | {3AABF6FF-0551-457D-921D-9C97D289463A} | {8FEA51AA-A736-43B5-B4FB-F8B1118BB220} |           24352 | 2024-08-07 04:31:31.222 | 2024-08-07 04
+:47:05.641 |                      |                |                  |                     |                 |                  |                    |
+        |                            | Web-GenesysQC-Hoh-369-vishakha.chamare@email.igenesys.com | No                   | OTP not received     | 2024-08-06 19:32:16
+    21230 | Esri_Anonymous | 2024-04-25 17:48:41 | Esri_Anonymous   | 2024-04-25 17:48:41 | H_1714024509976 | /S_1714022362751/U_1714022430156/H_1714024509976/ |
+                | Yashwant Tanaji Pashte    | 8879892115     | 1972-04-01 05:30:00 |      52 | Male       |                1 | Anita Yashwant Pasthe       |
+   1992 | Married        | 396432642535 |            |                |                    | Hinduism | Maharashtra | Marathi       | Secondary School |            | Ot
+hers          |                |                   |                              | No                           | Family       |                           | Outside Dh
+aravi |                      0 |                    |                    |                      |             |                             |
+  |                             |              |              |                   |                   |                    |               |              |
+       |                 0 | {249B853A-FE88-4C09-B090-B38F9E21810E} | {E6A11D4D-C219-46FC-A7C5-6D51834B6B77} |            3200 | 2024-04-25 12:18:41.581 | 2024-04-26 05
+:26:36.625 |                      |                |                  |                     |                 |                  |                    |
+        |                            |                                                           |                      |                      |
+    20513 | Esri_Anonymous | 2024-04-25 15:11:26 | Esri_Anonymous   | 2024-04-26 11:05:12 | H_1714031387669 | /S_1714028885053/U_1714028975727/H_1714031387669/ |
+                | Sharad Shantaram Kavankar | 9167965259     | 1991-05-03 00:00:00 |      32 | Male       |                1 | Tejasvi Gopal Kanase        |
+   2018 | Married        | 946374416273 | BLJPK1726Q | 1262008        | Orange             | Hinduism | Maharashtra | Marathi       | Secondary School | Others     | Ot
+hers          | 12000          |                   |                              | No                           | Family       | 2 wheeler                 | Outside Dh
+aravi |                      0 |                    |                    |                      |             |                             |
+  |                             |              |              |                   |                   |                    |               |              |
+       |                 0 | {1051AAA2-F793-4FAB-B0B4-905FE84367C9} | {A7368527-08C8-492F-A8A4-313A083FEDC2} |            3312 | 2024-04-26 05:35:12.935 | 2024-05-04 10
+:32:48.538 |                      |                |                  |                     |                 |                  |                    |
+        |                            |                                                           |                      |                      |
+    21230 | Esri_Anonymous | 2024-04-25 17:48:41 | Esri_Anonymous   | 2024-04-26 10:56:36 | H_1714024509976 | /S_1714022362751/U_1714022430156/H_1714024509976/ |
+                | Yashwant Tanaji Pashte    | 8879892115     | 1972-04-01 05:30:00 |      52 | Male       |                1 | Anita Yashwant Pasthe       |
+   2015 | Married        | 396432642535 |            |                |                    | Hinduism | Maharashtra | Marathi       | Secondary School |            | Ot
+hers          |                |                   |                              | No                           | Family       |                           | Outside Dh
+aravi |                      0 |                    |                    |                      |             |                             |
+  |                             |              |              |                   |                   |                    |               |              |
+       |                 0 | {249B853A-FE88-4C09-B090-B38F9E21810E} | {E6A11D4D-C219-46FC-A7C5-6D51834B6B77} |            3308 | 2024-04-26 05:26:36.625 | 9999-12-31 23
+:59:59     |                      |                |                  |                     |                 |                  |                    |
+        |                            |                                                           |                      |                      |
+(5 rows)
 
-# [04/Apr/24]
-1] 
-        location /web/static/ {
-                alias /path/to/odoo/addons/;
-            }
-        
-            location /web/assets/ {
-                alias /path/to/odoo/addons/;
-            }
-        
-            location /web/img/ {
-                alias /path/to/odoo/addons/;
-            }
-        static_http_document_root = /path/to/odoo/addons/ (odoo.conf)
+ select * from member_info limit 5;
+ objectid |  created_user  |    created_date     | last_edited_user |  last_edited_date   |    member_id    |                           relative_path
+        | relationship_with_hoh |       member_name        | member_contact_no |     member_dob      | member_age | member_gender | member_spouse_count |   member_spous
+e_name    | staying_since_year | marital_status |  aadhar_no   | pan_no | ration_card_no | ration_card_colour | religion |  from_state   | mother_tongue | education | o
+ccupation | type_of_work | monthly_income | mode_of_transport | school_college_name_location | handicap_or_critical_disease | staying_with | vehicle_owned_driven_type |
+ place_of_work  | row_num | member_floor_no | member_occupancy_type |              rel_globalid              |                globalid                | gdb_archive_oid
+|      gdb_from_date      |       gdb_to_date       | relationship_with_hoh_other | marital_status_other | religion_other | from_state_other | mother_tongue_other | edu
+cation_other | occupation_other | type_of_work_other | mode_of_transport_other | vehicle_owned_driven_other | activity_log
+----------+----------------+---------------------+------------------+---------------------+-----------------+-----------------------------------------------------------
+--------+-----------------------+--------------------------+-------------------+---------------------+------------+---------------+---------------------+---------------
+----------+--------------------+----------------+--------------+--------+----------------+--------------------+----------+---------------+---------------+-----------+--
+----------+--------------+----------------+-------------------+------------------------------+------------------------------+--------------+---------------------------+
+----------------+---------+-----------------+-----------------------+----------------------------------------+----------------------------------------+-----------------
++-------------------------+-------------------------+-----------------------------+----------------------+----------------+------------------+---------------------+----
+-------------+------------------+--------------------+-------------------------+----------------------------+--------------
+    18438 | Esri_Anonymous | 2024-04-25 17:42:52 | Esri_Anonymous   | 2024-04-26 12:07:07 | M_1714046077233 | /S_1714039025688/U_1714039068757/H_1714041841448/M_1714046
+077233/ | Spouse                | Rajpati Vijaypal Kori    | 9224135850        | 1972-08-14 00:00:00 |         51 | Female        |                   0 | Vijaypal Gurud
+in Kori   |                  0 | Married        | 263900823819 |        |                |                    | Hinduism | Uttar Pradesh | Hindi         |           |
+          |              |                |                   |                              | No                           | Family       |                           |
+                |         |                 |                       | {68B6FB73-F8AA-4F4B-B53D-C992F8462432} | {962CCD12-CB5A-4493-8362-9315A51FF6A0} |            2697
+| 2024-04-26 06:37:07.081 | 2024-05-09 07:09:55.595 |                             |                      |                |                  |                     |
+             |                  |                    |                         |                            |
+    16895 | Esri_Anonymous | 2024-04-25 17:48:43 | Esri_Anonymous   | 2024-04-26 10:57:41 | M_1714024724981 | /S_1714022362751/U_1714022430156/H_1714024509976/M_1714024
+724981/ | Spouse                | Anita Yashwant Pasthe    | 7057962291        | 1972-08-13 05:30:00 |         51 | Female        |                   1 | Yashwant Tanaj
+i Pashte  |                  0 | Married        | 685229882920 |        |                |                    |          |               |               |           |
+          |              |                |                   |                              |                              |              |                           |
+ Inside Dharavi |         |                 |                       | {E6A11D4D-C219-46FC-A7C5-6D51834B6B77} | {03CCA6F8-4D0D-4C2B-8659-6ED630D35B39} |            2684
+| 2024-04-26 05:27:41.728 | 9999-12-31 23:59:59     |                             |                      |                |                  |                     |
+             |                  |                    |                         |                            |
+    20809 | Esri_Anonymous | 2024-04-26 12:51:43 | Esri_Anonymous   | 2024-04-26 12:51:43 | M_1714114698016 | /S_1714112909427/U_1714112934410/H_1714114403646/M_1714114
+698016/ | Spouse                | Shanti prakash kori      | 7208225609        | 1971-01-01 05:30:00 |         53 | Female        |                   0 | Prakash ramjiy
+awan kori |               1996 | Married        | 377592859187 |        |                |                    |          |               |               |           |
+          |              |                |                   |                              | No                           | Family       |                           |
+                |         |                 |                       | {03E54C8A-52BA-4330-A497-3E928FED8F84} | {57DD491D-03D2-4925-B065-B86BE5B3C983} |            2706
+| 2024-04-26 07:21:43.835 | 2024-05-03 13:08:35.856 |                             |                      |                |                  |                     |
+             |                  |                    |                         |                            |
+    20810 | Esri_Anonymous | 2024-04-26 13:46:06 | Esri_Anonymous   | 2024-04-26 13:46:06 | M_1714115792261 | /S_1714114324451/U_1714114363255/H_1714115564046/M_1714115
+792261/ | Child                 | Jitendra Ramkumar Gupta  | 9967595804        |                     |          0 | Male          |                   1 | Rekha Jitendra
+ Gupta    |                  0 | Married        |              |        |                |                    | Hinduism | Uttar Pradesh | Hindi         |           |
+          |              |                | Self Vehicle      |                              | No                           | Family       |                           |
+                |         |                 |                       | {20435A0E-AEED-41D2-B099-65C0B9174317} | {82D351FC-1CD5-421D-BA39-61ECFF8D64D9} |            2709
+| 2024-04-26 08:16:06.55  | 2024-05-04 12:15:32.346 |                             |                      |                |                  |                     |
+             |                  |                    |                         |                            |
+    19608 | Esri_Anonymous | 2024-04-25 18:07:55 | Esri_Anonymous   | 2024-04-26 12:28:13 | M_1714046946425 | /S_1714044593648/U_1714044629676/H_1714046711221/M_1714046
+946425/ | Spouse                | Milind Pandurang Khot    | 7276192561        | 1981-04-15 05:30:00 |         43 | Male          |                   1 | Namrata Milind
+ Khot     |               2023 | Married        | 511985094623 |        |                |                    |          |               |               |           |
+          |              |                |                   |                              | No                           | Family       |                           |
+                |         |                 |                       | {A2512CF9-BF8C-4053-81E4-3FEF328CBBE0} | {25314106-DC95-4001-88C9-98FCA16F072D} |            2701
+| 2024-04-26 06:58:13.419 | 2024-05-04 10:29:40.733 |                             |                      |                |                  |                     |
+             |                  |                    |                         |                            |
+(5 rows)
+ select * from media_info limit 5;
+ objectid |  content_type   |                                       filename                                        | data_size | md5_checksum |
+                                                         item_url                                                                                  | file_upload_checked
+ | file_integrity_checked |  created_user  |    created_date     | last_edited_user |  last_edited_date   | parent_table_name | parent_unique_id |
+      document_type                            | name_on_document | date_on_document |      document_category      |         document_remarks         |              rel
+_globalid              |                globalid                | gdb_archive_oid |      gdb_from_date      |      gdb_to_date       | thumb_imp_content
+----------+-----------------+---------------------------------------------------------------------------------------+-----------+--------------+------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------
+-+------------------------+----------------+---------------------+------------------+---------------------+-------------------+------------------+----------------------
+-----------------------------------------------+------------------+------------------+-----------------------------+----------------------------------+-----------------
+-----------------------+----------------------------------------+-----------------+-------------------------+------------------------+-------------------
+     2811 | application/pdf | Unit_Layout_1711977328855.pdf                                                         |    138064 |              | /storage/emulated/0/And
+roid/data/com.igenesys/files/S_1711945759016/U_1711945862959/Unit_Layout_1711977328855.pdf                                                         |                   0
+ |                        | Esri_Anonymous | 2024-04-01 18:49:57 | Esri_Anonymous   | 2024-04-01 18:49:57 | unit_info         | U_1711945862959  | Unit_Layout
+                                               |                  |                  | Unit_Layout                 |                                  | {51B56D79-82A2-4
+121-B9EE-16DDAE07A2B1} | {414306FD-5955-408F-939C-4537999FA0F1} |              12 | 2024-04-01 13:19:57.709 | 2024-07-22 13:58:23.06 |
+     2805 |                 | Survey Pavti or Photo Pass_1711947021839.png                                          |   1488992 |              | /storage/emulated/0/And
+roid/data/com.igenesys/files/S_1711945759016/U_1711945862959/Survey Pavti or Photo Pass_1711947021839.png                                          |                   0
+ |                        | Esri_Anonymous | 2024-04-01 18:48:29 | Esri_Anonymous   | 2024-04-01 18:48:29 | unit_info         | U_1711945862959  | Survey Pavti or Photo
+ Pass                                          |                  |                  | Proof of Structure          |                                  | {51B56D79-82A2-4
+121-B9EE-16DDAE07A2B1} | {2E5B6FE9-DB82-49E0-9F08-385018AE822B} |               2 | 2024-04-01 13:18:29.111 | 9999-12-31 23:59:59    |
+     2806 |                 | Notarized Consent letter of earlier owner (Sale Purchase Affidavit)_1711947349777.png |   1930288 |              | /storage/emulated/0/And
+roid/data/com.igenesys/files/S_1711945759016/U_1711945862959/Notarized Consent letter of earlier owner (Sale Purchase Affidavit)_1711947349777.png |                   0
+ |                        | Esri_Anonymous | 2024-04-01 18:48:34 | Esri_Anonymous   | 2024-04-01 18:48:34 | unit_info         | U_1711945862959  | Notarized Consent let
+ter of earlier owner (Sale Purchase Affidavit) |                  |                  | Proof of Chain of Agreement | First and Last Page of Agreement | {51B56D79-82A2-4
+121-B9EE-16DDAE07A2B1} | {2976614C-15B3-4EB5-B30F-E789DE41F98C} |               3 | 2024-04-01 13:18:34.677 | 9999-12-31 23:59:59    |
+     2807 |                 | Aadhar Card_1711947453198.png                                                         |   1910768 |              | /storage/emulated/0/And
+roid/data/com.igenesys/files/S_1711945759016/U_1711945862959/Aadhar Card_1711947453198.png                                                         |                   0
+ |                        | Esri_Anonymous | 2024-04-01 18:48:46 | Esri_Anonymous   | 2024-04-01 18:48:46 | unit_info         | U_1711945862959  | Aadhar Card
+                                               |                  |                  | Proof of identity           |                                  | {51B56D79-82A2-4
+121-B9EE-16DDAE07A2B1} | {5DE635CE-232B-4809-8C26-C5D4C961DE56} |               4 | 2024-04-01 13:18:46.419 | 9999-12-31 23:59:59    |
+     2808 |                 | Electricity Connection Bill_1711947541932.png                                         |   2579648 |              | /storage/emulated/0/And
+roid/data/com.igenesys/files/S_1711945759016/U_1711945862959/Electricity Connection Bill_1711947541932.png                                         |                   0
+ |                        | Esri_Anonymous | 2024-04-01 18:48:52 | Esri_Anonymous   | 2024-04-01 18:48:52 | unit_info         | U_1711945862959  | Electricity Connectio
+n Bill                                         |                  |                  | 1 Year Recent Proof         |                                  | {51B56D79-82A2-4
+121-B9EE-16DDAE07A2B1} | {AFF3E570-CF26-4AA7-AB51-FA2D342BDE00} |               5 | 2024-04-01 13:18:52.95  | 9999-12-31 23:59:59    |
+(5 rows)
 
-auth_token_data
-15/04
-2024-04-15 12:56:38,186 609076 ERROR drp odoo.http: Exception during request handling.
-Traceback (most recent call last):
-  File "/data/odoostaging/odoo/addons/bus/websocket.py", line 818, in open_connection
-    socket = request.httprequest.environ['socket']
-KeyError: 'socket'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/data/odoostaging/odoo/odoo/http.py", line 2005, in __call__
-    response = request._serve_db()
-  File "/data/odoostaging/odoo/odoo/http.py", line 1591, in _serve_db
-    return service_model.retrying(self._serve_ir_http, self.env)
-  File "/data/odoostaging/odoo/odoo/service/model.py", line 133, in retrying
-    result = func()
-  File "/data/odoostaging/odoo/odoo/http.py", line 1618, in _serve_ir_http
-    response = self.dispatcher.dispatch(rule.endpoint, args)
-  File "/data/odoostaging/odoo/odoo/http.py", line 1732, in dispatch
-    return self.request.registry['ir.http']._dispatch(endpoint)
-  File "/data/odoostaging/odoo/addons/website/models/ir_http.py", line 237, in _dispatch
-    response = super()._dispatch(endpoint)
-  File "/data/odoostaging/odoo/odoo/addons/base/models/ir_http.py", line 154, in _dispatch
-    result = endpoint(**request.params)
-  File "/data/odoostaging/odoo/odoo/http.py", line 697, in route_wrapper
-    result = endpoint(self, *args, **params_ok)
-  File "/data/odoostaging/odoo/addons/bus/controllers/websocket.py", line 18, in websocket
-    return WebsocketConnectionHandler.open_connection(request)
-  File "/data/odoostaging/odoo/addons/bus/websocket.py", line 830, in open_connection
-    raise RuntimeError(
-RuntimeError: Couldn't bind the websocket. Is the connection opened on the evented port (8072)?
+select * from media_info__attach limit 5;
+ attachmentid | rel_globalid | content_type | att_name | data_size | data | globalid | gdb_archive_oid | gdb_from_date | gdb_to_date | created_user | created_date | las
+t_edited_user | last_edited_date
+--------------+--------------+--------------+----------+-----------+------+----------+-----------------+---------------+-------------+--------------+--------------+----
+--------------+------------------
+(0 rows)
