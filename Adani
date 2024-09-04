@@ -333,3 +333,39 @@ openssl s_client -starttls smtp -crlf -connect smtp.adani.com:25
 https://oystermap.com/apps/adani/sra_dev/forgot_password.html
 
 https://oystermap.com/apps/adani/sra_dev
+
+
+
+objectid | content_type |                   filename                    | data_size | md5_checksum |                                  item_url
+         | file_upload_checked | file_integrity_checked |  created_user  |    created_date     | last_edited_user |  last_edited_date   | parent_table_name | parent_uni
+que_id |     document_type     | name_on_document | date_on_document | document_category | document_remarks |              rel_globalid              |                gl
+obalid                | gdb_archive_oid |      gdb_from_date      |       gdb_to_date       | thumb_imp_content
+----------+--------------+-----------------------------------------------+-----------+--------------+-------------------------------------------------------------------
+---------+---------------------+------------------------+----------------+---------------------+------------------+---------------------+-------------------+-----------
+-------+-----------------------+------------------+------------------+-------------------+------------------+----------------------------------------+------------------
+----------------------+-----------------+-------------------------+-------------------------+-------------------
+     2405 | video/mp4    | unit_drp-s6-gn-z02-00001_1711946186428.mp4    |  11393088 |              | s_3b0a5644-3854-4fe4-bdf0-30cef11f5b71/u_drp-s6-gn-z02-00001/disto
+meter    |                   0 |                        | Esri_Anonymous | 2024-04-01 18:48:19 | Esri_Anonymous   | 2024-04-01 18:48:19 | unit_info         | U_17119458
+62959  | Unit Distometer Video |                  |                  | Distometer        |                  | {51B56D79-82A2-4121-B9EE-16DDAE07A2B1} | {9A5E57E0-28E2-46
+AA-AEB3-AA95E30A432E} |               1 | 2024-04-01 13:18:19.269 | 2024-07-22 13:55:20.827 |
+     5657 | video/mp4    | unit_drp-s6-gn-z02-00078_1712126150342.mp4    |   6085760 |              | s_30f466e2-0c82-4f91-966a-53188b65dc12/u_drp-s6-gn-z02-00078/disto
+meter    |                   0 |                        | Esri_Anonymous | 2024-04-03 17:45:30 | Esri_Anonymous   | 2024-04-03 17:45:30 | unit_info         | U_17121252
+72610  | Unit Distometer Video |                  |                  | Distometer        |                  | {9F74614A-C1F9-44EA-AF9F-E4E72726473F} | {B60DCAB8-597A-4F
+1F-BDB2-F42B55E559A4} |            1256 | 2024-04-03 12:15:30.908 | 9999-12-31 23:59:59     |
+     6171 | video/mp4    | unit_drp-s6-gn-z02-00099-f1_1712126102505.mp4 |   7514528 |              | s_8791347a-f421-4000-9d53-3a0edfce9cb8/u_drp-s6-gn-z02-00099-f1/di
+stometer |                   0 |                        | Esri_Anonymous | 2024-04-03 18:38:47 | Esri_Anonymous   | 2024-04-03 18:38:47 | unit_info         | U_17121257
+60413  | Unit Distometer Video |                  |                  | Distometer        |                  | {61B4BE9E-AB23-4E45-9FFB-119DF626680B} | {2A17EBF7-AFA1-40
+D9-B33F-66BC40CC1A0E} |            1475 | 2024-04-03 13:08:47.421 | 9999-12-31 23:59:59     |
+     2816 | video/mp4    | unit_drp-s6-gn-z02-00002_1711952909732.mp4    |  15463795 |              | s_5963d5ca-f968-4e14-94da-f43ba8843771/u_drp-s6-gn-z02-00002/disto
+meter    |                   0 |                        | Esri_Anonymous | 2024-04-01 19:22:09 | Esri_Anonymous   | 2024-04-01 19:22:09 | unit_info         | U_17119523
+21735  | Unit Distometer Video |                  |                  | Distometer        |                  | {61B94BE5-5473-482C-A67E-EA9D26671861} | {5F1C22A4-76BA-44
+52-95D7-D644B8467896} |              22 | 2024-04-01 13:52:09.428 | 9999-12-31 23:59:59     |
+     2420 | video/mp4    | unit_drp-s6-gn-z02-00003_1711958398182.mp4    |  10150752 |              | s_405ad0f7-0189-4a80-bdc1-2bff1346e977/u_drp-s6-gn-z02-00003/disto
+meter    |                   0 |                        | Esri_Anonymous | 2024-04-01 19:27:51 | Esri_Anonymous   | 2024-04-01 19:27:51 | unit_info         | U_17119581
+10938  | Unit Distometer Video |                  |                  | Distometer        |                  | {27472954-24E6-4B29-AC32-9C364F972AA1} | {55DC62C9-35B6-4B
+1B-A557-4D4D5F844CE3} |              37 | 2024-04-01 13:57:51.258 | 9999-12-31 23:59:59     |
+
+
+
+
+
