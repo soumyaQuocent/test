@@ -26,6 +26,8 @@ FROM media_info
 WHERE md5_checksum IS NOT NULL AND md5_checksum != ''
 LIMIT 5;
 
+SELECT * FROM media_info WHERE item_url NOT LIKE '%Android%' LIMIT 5;
+
  source odoo-venv/bin/activate
 
 inside odoo
