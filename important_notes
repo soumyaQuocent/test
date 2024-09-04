@@ -21,7 +21,10 @@ odoostaging
 psql -h 10.212.196.140 -U tmsadmin -d adanistaging
 password : $R%@2024
 
-
+SELECT * 
+FROM media_info 
+WHERE md5_checksum IS NOT NULL AND md5_checksum != ''
+LIMIT 5;
 
  source odoo-venv/bin/activate
 
