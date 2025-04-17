@@ -108,10 +108,10 @@ gzip_types text/css text/scss text/plain text/xml application/xml application/js
 HTTP
    proxy_hide_header X-Frame-Options;
   	add_header X-Frame-Options "SAMEORIGIN" always;
-  	add_header Content-Security-Policy "frame-ancestors http://localhost:8000 http://localhost/odoo http://localhost:8069" always;
+  	add_header Content-Security-Policy "frame-ancestors https://tmsinfostagging.adani.com https://tmsinfostagging.adani.com/odoo" always;
 
 Location
-   proxy_pass http://localhost/odoo;
+   proxy_pass https://tmsinfostagging.adani.com/odoo;
 			proxy_set_header Host $host;
 			proxy_set_header X-Real-IP $remote_addr;
 			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -121,7 +121,7 @@ Location
 			proxy_hide_header X-Frame-Options;
 
 			# Add custom headers to allow iframe embedding
-			add_header Content-Security-Policy "frame-ancestors http://localhost:8000 http://localhost" always;
+			add_header Content-Security-Policy "frame-ancestors https://tmsinfostagging.adani.com/odoo https://tmsinfostagging.adani.com" always;
 			add_header X-Frame-Options "ALLOWALL" always;
            
               
