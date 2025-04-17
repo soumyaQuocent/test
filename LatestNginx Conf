@@ -105,6 +105,23 @@ server{
 gzip_types text/css text/scss text/plain text/xml application/xml application/json application/javascript;
   gzip on;
 }
+HTTP
+   proxy_hide_header X-Frame-Options;
+  	add_header X-Frame-Options "SAMEORIGIN" always;
+  	add_header Content-Security-Policy "frame-ancestors http://localhost:8000 http://localhost/odoo http://localhost:8069" always;
 
+Location
+   proxy_pass http://localhost/odoo;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+			# Remove CSP and X-Frame headers sent by Odoo
+			proxy_hide_header Content-Security-Policy;
+			proxy_hide_header X-Frame-Options;
+
+			# Add custom headers to allow iframe embedding
+			add_header Content-Security-Policy "frame-ancestors http://localhost:8000 http://localhost" always;
+			add_header X-Frame-Options "ALLOWALL" always;
            
               
